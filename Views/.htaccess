@@ -1,0 +1,20 @@
+# Activar RewriteEngine
+
+RewriteEngine on
+
+#Esta Condicion es verdadera cuando la ruta al REQUEST_FILENAME no hace referencia a una que existe en el.
+//Buscarmos primero el directorio
+RewriteCond %{REQUEST_FILENAME} !-d
+
+//luego buscamos nuestros archivos
+#Esta condicion es verdadera cuando la ruta al REQUEST_FILENAME no hace referencia a uno archivo existente en el servidor.
+RewriteCond %{REQUEST_FILENAME} !-f
+
+si no colocamos estas lineas de codigo no podemos buscar nuestros directorios y carpetas
+con este archivo vamos a crear url amigables
+
+#la parte ^ (. *) $ le dice al modulo de reescritura que queremos pasar la rutacompleta solicitada como un parametro.
+#la parte de QSA le dice al modulo que anexe cualquier cadena de consulta a la solicitud.
+
+url va a contener toda la informacion que nosotros ingresemos por nuestra URL.
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
