@@ -10,6 +10,7 @@ class Usuarios{
             //o por validaciones que vayamos haciendo y que nos hagan ir a otro campo del formulario.
             document.getElementById("email").focus();
             //toast para mandar mensajes
+            //toast es una clase de materialize
             M.toast({ html: 'Ingrese el email', classes: 'rounded'});
         }else{
             //si el campo del email tiene datos verifica el de la pasword
@@ -23,7 +24,7 @@ class Usuarios{
                     if(6 <= password.length){
                         //para enviar nuestros datos por post al servidor
                         //le enviamos como parametro la ruta del controlador
-                        //y optenemos respuesta atraves de response.
+                        //y optenemos respuesta atraves de response. responde optiene los datos que envia el servidor
                         $.post("Index/userLogin", {email,password}, (response)=>{
                             console.log(response);
                             try{
