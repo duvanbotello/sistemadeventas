@@ -18,6 +18,7 @@ $url = explode("/", $url);
         }
     }
     
+    //invoca todas las librerias
     //me permite obtener las clases que estan siendo invocada
     //de esta forma simplificamos codigo ya que no necesitamos colocar muchos require
     spl_autoload_register(function($class){

@@ -4,10 +4,13 @@ class QueryManager{
     function __construct($USER, $PASS, $DB){
         try{
             //creamos una instancia de PDO y le enviamos los parametros de conexion
-            $this->pdo = new PDO('pgsql:host=localhost;dbname='.$DB,$USER,$PASS,
+            $this->pdo = new PDO('mysql:host=localhost;dbname='.$DB.';charset=utf8',$USER,$PASS,
                                 //para mejorar la seguridad en la conexion
+                                //evita inyeccion SQL
                                   [
-                                      PDO:: ATTR_EMULATE_PREPARES => flase,
+                                      PDO:: ATTR_EMULATE_PREPARES => false,
+                                      //los errores que se porducen en la base de datos podemos manejar estos errores
+                                      //en exepciones
                                       PDO:: ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
                                   ]);
         }catch (PDOException $e){
